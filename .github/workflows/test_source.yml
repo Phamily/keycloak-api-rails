@@ -1,5 +1,5 @@
-name: PR
-run-name: "PR: ${{ github.head_ref }} (${{ github.event.action }})"
+name: Test source
+run-name: "Test source: ${{ github.head_ref }} (${{ github.event.action }})"
 
 on:
   pull_request:
@@ -10,10 +10,10 @@ permissions:
 
 jobs:
   test:
-    name: Test
+    name: RSpec
     runs-on: ubuntu-24.04
     concurrency:
-      group: pr-test-${{ github.ref }}
+      group: test-source-${{ github.ref }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v6
